@@ -8,13 +8,40 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Contact_book
+namespace Contact_book.View
 {
     public partial class Form1 : Form
     {
+       public  ContactController contactController = new ContactController();
+        AddContactForm addContact;
         public Form1()
         {
             InitializeComponent();
+            this.listBox1.Items.AddRange(contactController.GetContact().ToArray());
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            addContact = new AddContactForm();
+            addContact.Show();
+            addContact.button1.Click += new System.EventHandler(this.button_add);
+          
+        }
+        public void button_add(object sender, EventArgs e)
+        {
+
+            this.listBox1.Items.Add(new Contact(this.contactController.list_contacts.Count > 0 ? contactController.list_contacts.Last().ID + 1 : 0,addContact.textBox1.Text, addContact.textBox2.Text, new List<string> { $"{addContact.textBox4.Text}" }, addContact.textBox5.Text));
+
+            addContact.Close();
+
+        }
+
+       
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
+    
 }

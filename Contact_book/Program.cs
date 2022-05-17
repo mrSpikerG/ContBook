@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Contact_book
+namespace Contact_book.View
 {
     static class Program
     {
@@ -16,6 +16,7 @@ namespace Contact_book
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+           
             Application.Run(new Form1());
         }
     }
