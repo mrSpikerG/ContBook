@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Contact_book
 {
-    class FileController
+   public class FileController
     {
         public List<Contact> list_contacts { get; set; }
         public string Path;
@@ -23,7 +23,7 @@ namespace Contact_book
                 File.AppendAllText(Path, item.ToString());
             }
         }
-        public void Read(ContactController contactController)
+        public void Read(ListContactsContoller contactController)
         {
             string str = File.ReadAllText(Path);
             string[] splStr = str.Split('\n');

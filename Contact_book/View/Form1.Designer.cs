@@ -1,8 +1,11 @@
 ﻿
+using System.Drawing;
+
 namespace Contact_book.View
 {
     partial class Form1
     {
+        
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -29,21 +32,12 @@ namespace Contact_book.View
         /// </summary>
         private void InitializeComponent()
         {
-
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            file.Read(this.ListContacts);
+            generalContactControlls = new GeneralContactControlls(this.ListContacts);
             this.SuspendLayout();
-
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(12, 139);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(469, 260);
-            this.listBox1.TabIndex = 0;
             // 
             // button1
             // 
@@ -64,18 +58,28 @@ namespace Contact_book.View
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(117, 29);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Контакты";
+            this.label2.Text = "Мои контакты";
             this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // listContactsControl1
+            // 
+            this.generalContactControlls.BackColor = this.BackColor;
+            this.generalContactControlls.Location = new System.Drawing.Point(30, 50);
+            this.generalContactControlls.Name = "generalContactControlls";
+            this.generalContactControlls.Size = new System.Drawing.Size(450, 500);
+            this.generalContactControlls.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            
             this.ClientSize = new System.Drawing.Size(519, 563);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.listBox1);
-            this.Name = "Form1";
+            this.Controls.Add(this.generalContactControlls);
+
+            this.Name = "My Contacts";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -83,10 +87,10 @@ namespace Contact_book.View
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
+        private FileController file = new FileController();
+        private GeneralContactControlls generalContactControlls;
     }
 }
 

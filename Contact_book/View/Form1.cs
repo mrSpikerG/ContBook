@@ -12,13 +12,13 @@ namespace Contact_book.View
 {
     public partial class Form1 : Form
     {
-       public  ContactController contactController = new ContactController();
-        AddContactForm addContact;
+       public  ListContactsContoller ListContacts = new ListContactsContoller();
+       AddContactForm addContact;
+       
         public Form1()
         {
             InitializeComponent();
-            this.listBox1.Items.AddRange(contactController.GetContact().ToArray());
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -30,9 +30,9 @@ namespace Contact_book.View
         }
         public void button_add(object sender, EventArgs e)
         {
-
-            this.listBox1.Items.Add(new Contact(this.contactController.list_contacts.Count > 0 ? contactController.list_contacts.Last().ID + 1 : 0,addContact.textBox1.Text, addContact.textBox2.Text, new List<string> { $"{addContact.textBox4.Text}" }, addContact.textBox5.Text));
-
+            this.ListContacts.list_contacts.Add(new Contact(this.ListContacts.list_contacts.Count > 0 ? ListContacts.list_contacts.Last().ID + 1 : 0, addContact.textBox1.Text, addContact.textBox2.Text, new List<string> { $"{addContact.textBox4.Text}" }, addContact.textBox5.Text));
+            this.generalContactControlls.GenerateView(this.ListContacts.list_contacts) ;
+            file.Write(this.ListContacts.list_contacts);
             addContact.Close();
 
         }

@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 
 namespace Contact_book
 {
-     public class ContactController
+     public class ListContactsContoller
     {
         public List<Contact> list_contacts { get; set; }
 
-        public ContactController()
+        public ListContactsContoller()
         {
             list_contacts = new List<Contact>();
-            this.list_contacts.Add(new Contact(1,"Ponomarenko", "Artem", new List<string> { "+38067674556633" },"Ivanovskaya,22"));
-            this.list_contacts.Add(new Contact(2,"Azarova", "Karolina", new List<string> { "+38067004556633" }, "Shmidta,35"));
-            this.list_contacts.Add(new Contact(3,"Shut", "Mila", new List<string> { "+38063688556633" }, "Korolenka,22"));
+           
         }
 
 
@@ -37,11 +35,13 @@ namespace Contact_book
             this.list_contacts.Remove(item);
 
         }
-        public List<Contact> GetContact()
+        public List<Contact> GetContacts()
         {
             return list_contacts;
 
         }
+       
+        public Contact GetById(int id) => list_contacts.Where(item => item.ID.Equals(id)).First<Contact>();
 
     }
 }
