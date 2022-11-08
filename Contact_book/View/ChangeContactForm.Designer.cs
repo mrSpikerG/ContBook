@@ -41,7 +41,6 @@ namespace Contact_book.View
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Contact_book.Properties.Resources.Конактфото1;
             this.pictureBox1.Location = new System.Drawing.Point(98, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(133, 118);
